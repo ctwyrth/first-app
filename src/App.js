@@ -1,24 +1,18 @@
-import logo from './logo.svg';
+import React from 'react';
+
 import './App.css';
+
+import WishMessage from './components/WishMessage';
+import ProductItem from './components/ProductItem';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <React.Fragment>
+      <nav className="navbar navbar-dark bg-dark navbar-expand-sm">
+        <a href="/" className="navbar-brand ms-2">React with Event Handling</a>
+      </nav>
+      <ProductItem />
+    </React.Fragment>
   );
 }
 
