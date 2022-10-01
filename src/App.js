@@ -2,7 +2,6 @@ import React from 'react';
 
 import './App.css';
 
-import WishMessage from './components/WishMessage';
 import ProductItem from './components/ProductItem';
 
 function App() {

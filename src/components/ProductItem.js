@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { solid, regular, brands } from '@fortawesome/fontawesome-svg-core/import.macro';
+import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
 
 const ProductItem = () => {
    const [state, setState] = useState({
@@ -61,7 +61,7 @@ const ProductItem = () => {
                      <tbody>
                         <tr>
                            <td>{product.sno}</td>
-                           <td><img src={product.image} width="50px" alt="picture of a smart watch" /></td>
+                           <td><img src={product.image} width="50px" alt="non-Apple smart watch" /></td>
                            <td>{product.name}</td>
                            <td>${product.price}</td>
                            <td><FontAwesomeIcon icon={solid('minus-square')} className="me-1" onClick={handleDecrement} />{product.qty}<FontAwesomeIcon icon={solid('plus-square')} className="ms-1" onClick={handleIncrement} /></td>
