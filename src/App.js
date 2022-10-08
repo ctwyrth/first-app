@@ -1,18 +1,18 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 import './App.css';
 
-import ProductItem from './components/ProductItem';
+import ShoppingCart from './components/ShoppingCart';
 
 function App() {
-  return (
-    <React.Fragment>
-      <nav className="navbar navbar-dark bg-dark navbar-expand-sm">
-        <a href="/" className="navbar-brand ms-2">React with Event Handling</a>
-      </nav>
-      <ProductItem />
-    </React.Fragment>
-  );
+   return (
+      <Fragment>
+         <nav className="navbar navbar-dark bg-dark navbar-expand-sm">
+            <a href="/" className="navbar-brand ms-2">React with Event Handling</a>
+         </nav>
+         <ShoppingCart />
+      </Fragment>
+   );
 }
 
 export default App;

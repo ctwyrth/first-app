@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { Fragment } from 'react'
 
 const Student = (props) => {
    return (
-      <React.Fragment>
+      <Fragment>
          <div className="card">
             <div className="card-body">
                <h2>Welcome {props.name}!</h2>
@@ -10,7 +10,7 @@ const Student = (props) => {
                <pre>{JSON.stringify(props)}</pre>
             </div>
          </div>
-      </React.Fragment>
+      </Fragment>
    )
 };
 

@@ -3,11 +3,13 @@ import React, { useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { solid } from '@fortawesome/fontawesome-svg-core/import.macro';
 
+import watch from '../assets/img/640-black-smartwatch.jpg';
+
 const ProductItem = () => {
    const [state, setState] = useState({
       product: {
          sno: 'AA001',
-         image: 'http://cdn.shopify.com/s/files/1/0262/8855/4033/products/tranyago-smartwatch-tranya-1_1200x1200.jpg?v=1648093721',
+         image: watch,
          name: 'Mi Watch',
          price: 1500,
          qty: 2
@@ -29,7 +31,7 @@ const ProductItem = () => {
       setState((state) => ({
          product: {
             ...state.product,
-            qty: state.product.qty--
+            qty: state.product.qty - 1 > 0 ? state.product.qty-- : 1
          }
       }));
    }

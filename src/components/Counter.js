@@ -20,7 +20,7 @@ const Counter = () => {
                <div className="col-md-3">
                   <div className="card">
                      <div className="card-header bg-primary">
-                        <p className="h4">Counter</p>
+                        <p className="h4 mb-1 mt-1">Counter</p>
                      </div>
                      <div className="card-body">
                         <h5 className="display-3">{count}</h5>
@@ -35,4 +35,4 @@ const Counter = () => {
    )
 }
 
-export default Counter
+export default Counter;
