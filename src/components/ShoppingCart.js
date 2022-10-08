@@ -48,22 +48,44 @@ const ShoppingCart = () => {
 
    let { products } = state;
 
-   const handleIncrement = () => {
-      setState((state) => ({
-         product: {
-            ...state.product,
-            qty: state.product.qty++
+   const handleIncrement = (productId) => {
+      let items = products.map((product) => {
+         if (product.sno === productId) {
+            return {
+               ...product,
+               qty: product.qty + 1
+            }
          }
+         return product;
+      });
+
+      setState((state) => ({
+         products: [...items],
       }));
    }
 
-   const handleDecrement = () => {
-      setState((state) => ({
-         product: {
-            ...state.product,
-            qty: state.product.qty - 1 > 0 ? state.product.qty-- : 1
+   const handleDecrement = (productId) => {
+      let items = products.map((product) => {
+         if (product.sno === productId) {
+            return {
+               ...product,
+               qty: product.qty - 1 < 0 ? 0 : product.qty - 1
+            }
          }
+         return product;
+      });
+
+      setState((state) => ({
+         products: [...items],
       }));
+   }
+
+   const grandTotal = () => {
+      let total = 0;
+      products.forEach((product) => {
+         total += product.qty * product.price;
+      })
+      return total;
    }
 
    return (
@@ -93,17 +115,24 @@ const ShoppingCart = () => {
                      <tbody>
                         {products.map((product) => {
                            return (
-                              <tr>
+                              <tr key={product.sno}>
                                  <td>{product.sno}</td>
                                  <td><img src={product.image} width="50px" alt="non-Apple smart watch" /></td>
                                  <td>{product.name}</td>
-                                 <td>${product.price}</td>
-                                 <td><FontAwesomeIcon icon={solid('minus-square')} className="me-1" onClick={handleDecrement} />{product.qty}<FontAwesomeIcon icon={solid('plus-square')} className="ms-1" onClick={handleIncrement} /></td>
-                                 <td>${product.price * product.qty}</td>
+                                 <td>${(product.price).toFixed(2)}</td>
+                                 <td><FontAwesomeIcon icon={solid('minus-square')} className="me-1" onClick={(e) => handleDecrement(product.sno)} />{product.qty}<FontAwesomeIcon icon={solid('plus-square')} className="ms-1" onClick={(e) => handleIncrement(product.sno)} /></td>
+                                 <td>${(product.price * product.qty).toFixed(2)}</td>
                               </tr>
                            )}
                         )}
                      </tbody>
+                     <tfoot>
+                        <tr>
+                           <td colspan={4}></td>
+                           <td><strong>GRAND TOTAL:</strong></td>
+                           <td>${(grandTotal()).toFixed(2)}</td>
+                        </tr>
+                     </tfoot>
                   </table>
                </div>
             </div>

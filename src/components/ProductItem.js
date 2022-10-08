@@ -22,7 +22,7 @@ const ProductItem = () => {
       setState((state) => ({
          product: {
             ...state.product,
-            qty: state.product.qty++
+            qty: state.product.qty + 1
          }
       }));
    }
@@ -31,7 +31,7 @@ const ProductItem = () => {
       setState((state) => ({
          product: {
             ...state.product,
-            qty: state.product.qty - 1 > 0 ? state.product.qty-- : 1
+            qty: state.product.qty - 1 > 0 ? state.product.qty - 1 : 1
          }
       }));
    }
@@ -66,7 +66,7 @@ const ProductItem = () => {
                            <td><img src={product.image} width="50px" alt="non-Apple smart watch" /></td>
                            <td>{product.name}</td>
                            <td>${product.price}</td>
-                           <td><FontAwesomeIcon icon={solid('minus-square')} className="me-1" onClick={handleDecrement} />{product.qty}<FontAwesomeIcon icon={solid('plus-square')} className="ms-1" onClick={handleIncrement} /></td>
+                           <td><FontAwesomeIcon icon={solid('minus-square')} className="me-1" onClick={handleDecrement} /> {product.qty} <FontAwesomeIcon icon={solid('plus-square')} className="ms-1" onClick={handleIncrement} /></td>
                            <td>${product.price * product.qty}</td>
                         </tr>
                      </tbody>
