@@ -1,16 +1,15 @@
 import React, { Fragment } from 'react';
 
 import './App.css';
-
-import LoginForm from './components/LoginForm';
+import ProductCart from './components/ProductCart';
 
 function App() {
    return (
       <Fragment>
          <nav className="navbar navbar-dark bg-dark navbar-expand-sm">
-            <a href="/" className="navbar-brand ms-2">React with Form Handling</a>
+            <a href="/" className="navbar-brand ms-4">React with Conditional & List Rendering</a>
          </nav>
-         <LoginForm />
+         <ProductCart />
       </Fragment>
    );
 }
