@@ -1,15 +1,17 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 
 import './App.css';
-import DigitalWatch from './components/DigitalWatch';
+import UserList from './components/UserList';
+// import DigitalWatch from './components/DigitalWatch';
 
 function App() {
    return (
       <Fragment>
          <nav className="navbar navbar-dark bg-dark navbar-expand-sm">
-            <a href="/" className="navbar-brand ms-4">React with LifeCycle Methods</a>
+            <a href="/" className="navbar-brand ms-4">React with Server Connection</a>
          </nav>
-         <DigitalWatch />
+         {/* <DigitalWatch /> */}
+         <UserList />
       </Fragment>
    );
 }
