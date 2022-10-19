@@ -5,9 +5,27 @@ const UserList = () => {
    const [ users, setUsers] = useState([]);
 
    useEffect(() => {
-      UserService.getAllUsers()
-         .then(res => setUsers(res.data))
-         .catch(err => console.log(err));
+      // UserService.getAllUsers()
+      //    .then(res => setUsers(res.data))
+      //    .catch(err => console.log(err));
+
+      async function fetchData() {
+         let response = {};
+
+         try {
+            response = await UserService.getAllUsers();
+            // console.log(response.data);
+            setUsers(response.data);
+         }
+         catch (error) {
+            console.log(error);
+         }
+         return () => {
+            response = null;
+         }
+      }
+
+      fetchData();
    }, []);
 
    return (
@@ -33,7 +51,7 @@ const UserList = () => {
                   </tr>
                </thead>
                <tbody>
-                  {users && users.map((user) => {
+                  {users?.map((user) => {
                      return (
                         <tr key={user.id}>
                            <td>{user.id}</td>

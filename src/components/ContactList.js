@@ -1,11 +1,33 @@
 import React, { Fragment, useState } from 'react';
+import { useEffect } from 'react';
 
 import ContactService from '../services/ContactService';
 
 const ContactList = (props) => {
    const [ state, setState ] = useState({
-      contacts: ContactService.getContactList()
+      contacts: []
    });
+
+   useEffect(() => {
+      async function fetchData() {
+         let response = {};
+
+         try {
+            response = await ContactService.getContactList();
+            setState(() => ({
+               contacts: response.data
+            }));
+         }
+         catch (error) {
+            console.log(error);
+         }
+         return () => {
+            response = null;
+         }
+      };
+
+      fetchData();
+   }, []);
 
    let { contacts } = state;
 
@@ -26,7 +48,7 @@ const ContactList = (props) => {
                </tr>
             </thead>
             <tbody>
-               { contacts.map((contact, idx) => {
+               { contacts?.map((contact, idx) => {
                   return (
                      <tr onClick={() => handleRowClick(contact)} key={contact.login.uuid}>
                         <td>{idx + 1}</td>

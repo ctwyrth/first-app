@@ -1,17 +1,38 @@
 import React, { Fragment, useEffect, useState } from 'react';
+import { Routes, Route } from 'react-router-dom';
 
 import './App.css';
-import UserList from './components/UserList';
+import EmployeeList from './modules/employees/components/EmployeeList';
+import NavBar from './modules/layout/components/NavBar';
+import Home from './modules/layout/components/Home';
+import About from './modules/layout/components/About';
+import UserLogin from './modules/users/components/UserLogin';
+import UserRegister from './modules/users/components/UserRegister';
+import PageNotFound from './modules/layout/components/PageNotFound';
+// import ContactApp from './components/ContactApp';
+// import UserList from './components/UserList';
 // import DigitalWatch from './components/DigitalWatch';
 
 function App() {
    return (
       <Fragment>
-         <nav className="navbar navbar-dark bg-dark navbar-expand-sm">
-            <a href="/" className="navbar-brand ms-4">React with Server Connection</a>
-         </nav>
+         <Routes>
+            <Route path='/' element={<NavBar />}>
+               <Route index element={<Home />} />
+               <Route path='employees/list' element={<EmployeeList />} />
+               <Route path='about' element={<About />} />
+               <Route path='users/login' element={<UserLogin />} />
+               <Route path='users/register' element={<UserRegister />} />
+               <Route path='*' element={<PageNotFound />} />
+            </Route>
+         </Routes>
+         
+         {/* <nav className="navbar navbar-dark bg-dark navbar-expand-sm">
+            <a href="/" className="navbar-brand ms-4">React with Routing</a>
+         </nav> */}
          {/* <DigitalWatch /> */}
-         <UserList />
+         {/* <UserList /> */}
+         {/* <ContactApp /> */}
       </Fragment>
    );
 }
